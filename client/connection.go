@@ -16,7 +16,7 @@ func SetClient(cl *Client) {
 }
 
 func GetClient() *Client {
-	return cl
+	return client
 }
 
 type Client struct {
