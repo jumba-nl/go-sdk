@@ -9,6 +9,16 @@ import (
 
 var defaultBackendHost = "api.jumba.nl:443"
 
+var client *Client
+
+func SetClient(cl *Client) {
+	client = cl
+}
+
+func GetClient() *Client {
+	return cl
+}
+
 type Client struct {
 	Host string
 	Token string
