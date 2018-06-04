@@ -5,11 +5,18 @@ import (
 	"google.golang.org/grpc/credentials"
 	"github.com/jumba-nl/go-sdk/credential"
 	"crypto/tls"
+	"google.golang.org/grpc/metadata"
+	"context"
 )
 
 var defaultBackendHost = "api.jumba.nl:443"
 
 var client *Client
+
+func CreateContext(token string) context.Context {
+	md := metadata.Pairs("token", token)
+	return metadata.NewOutgoingContext(context.Background(), md)
+}
 
 func SetClient(cl *Client) {
 	client = cl
@@ -20,19 +27,19 @@ func GetClient() *Client {
 }
 
 type Client struct {
-	Host string
+	Host  string
 	Token string
-	Dev bool
-	Conn *grpc.ClientConn
+	Dev   bool
+	Conn  *grpc.ClientConn
 }
 
-func NewDefaultClient() *Client{
+func NewDefaultClient() *Client {
 	return &Client{
 		Host: defaultBackendHost,
 	}
 }
 
-func NewClient(host, token string, dev bool) *Client{
+func NewClient(host, token string, dev bool) *Client {
 	client := NewDefaultClient()
 	if host != "" {
 		client.Host = host
