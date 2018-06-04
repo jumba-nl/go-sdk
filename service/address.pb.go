@@ -36,7 +36,7 @@ func (m *AddressGetOptions) Reset()         { *m = AddressGetOptions{} }
 func (m *AddressGetOptions) String() string { return proto.CompactTextString(m) }
 func (*AddressGetOptions) ProtoMessage()    {}
 func (*AddressGetOptions) Descriptor() ([]byte, []int) {
-	return fileDescriptor_address_21f6eb8670ed08d0, []int{0}
+	return fileDescriptor_address_0c4b1f5c1984055f, []int{0}
 }
 func (m *AddressGetOptions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddressGetOptions.Unmarshal(m, b)
@@ -88,7 +88,7 @@ func (m *AddressGetByPathOptions) Reset()         { *m = AddressGetByPathOptions
 func (m *AddressGetByPathOptions) String() string { return proto.CompactTextString(m) }
 func (*AddressGetByPathOptions) ProtoMessage()    {}
 func (*AddressGetByPathOptions) Descriptor() ([]byte, []int) {
-	return fileDescriptor_address_21f6eb8670ed08d0, []int{1}
+	return fileDescriptor_address_0c4b1f5c1984055f, []int{1}
 }
 func (m *AddressGetByPathOptions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddressGetByPathOptions.Unmarshal(m, b)
@@ -126,7 +126,7 @@ func (m *AddressGetMultiOptions) Reset()         { *m = AddressGetMultiOptions{}
 func (m *AddressGetMultiOptions) String() string { return proto.CompactTextString(m) }
 func (*AddressGetMultiOptions) ProtoMessage()    {}
 func (*AddressGetMultiOptions) Descriptor() ([]byte, []int) {
-	return fileDescriptor_address_21f6eb8670ed08d0, []int{2}
+	return fileDescriptor_address_0c4b1f5c1984055f, []int{2}
 }
 func (m *AddressGetMultiOptions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddressGetMultiOptions.Unmarshal(m, b)
@@ -153,6 +153,44 @@ func (m *AddressGetMultiOptions) GetIds() []string {
 	return nil
 }
 
+type AddressListOptions struct {
+	Pagination           *Pagination `protobuf:"bytes,1,opt,name=Pagination" json:"Pagination,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}    `json:"-"`
+	XXX_unrecognized     []byte      `json:"-"`
+	XXX_sizecache        int32       `json:"-"`
+}
+
+func (m *AddressListOptions) Reset()         { *m = AddressListOptions{} }
+func (m *AddressListOptions) String() string { return proto.CompactTextString(m) }
+func (*AddressListOptions) ProtoMessage()    {}
+func (*AddressListOptions) Descriptor() ([]byte, []int) {
+	return fileDescriptor_address_0c4b1f5c1984055f, []int{3}
+}
+func (m *AddressListOptions) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_AddressListOptions.Unmarshal(m, b)
+}
+func (m *AddressListOptions) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_AddressListOptions.Marshal(b, m, deterministic)
+}
+func (dst *AddressListOptions) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AddressListOptions.Merge(dst, src)
+}
+func (m *AddressListOptions) XXX_Size() int {
+	return xxx_messageInfo_AddressListOptions.Size(m)
+}
+func (m *AddressListOptions) XXX_DiscardUnknown() {
+	xxx_messageInfo_AddressListOptions.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AddressListOptions proto.InternalMessageInfo
+
+func (m *AddressListOptions) GetPagination() *Pagination {
+	if m != nil {
+		return m.Pagination
+	}
+	return nil
+}
+
 type Address struct {
 	Id                   string   `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
 	Path                 string   `protobuf:"bytes,2,opt,name=path" json:"path,omitempty"`
@@ -167,7 +205,7 @@ func (m *Address) Reset()         { *m = Address{} }
 func (m *Address) String() string { return proto.CompactTextString(m) }
 func (*Address) ProtoMessage()    {}
 func (*Address) Descriptor() ([]byte, []int) {
-	return fileDescriptor_address_21f6eb8670ed08d0, []int{3}
+	return fileDescriptor_address_0c4b1f5c1984055f, []int{4}
 }
 func (m *Address) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Address.Unmarshal(m, b)
@@ -216,17 +254,18 @@ func (m *Address) GetLegacy() *Legacy {
 }
 
 type Addresses struct {
-	Address              []*Address `protobuf:"bytes,1,rep,name=Address" json:"Address,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
-	XXX_unrecognized     []byte     `json:"-"`
-	XXX_sizecache        int32      `json:"-"`
+	Address              []*Address  `protobuf:"bytes,1,rep,name=Address" json:"Address,omitempty"`
+	Pagination           *Pagination `protobuf:"bytes,2,opt,name=Pagination" json:"Pagination,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}    `json:"-"`
+	XXX_unrecognized     []byte      `json:"-"`
+	XXX_sizecache        int32       `json:"-"`
 }
 
 func (m *Addresses) Reset()         { *m = Addresses{} }
 func (m *Addresses) String() string { return proto.CompactTextString(m) }
 func (*Addresses) ProtoMessage()    {}
 func (*Addresses) Descriptor() ([]byte, []int) {
-	return fileDescriptor_address_21f6eb8670ed08d0, []int{4}
+	return fileDescriptor_address_0c4b1f5c1984055f, []int{5}
 }
 func (m *Addresses) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Addresses.Unmarshal(m, b)
@@ -253,10 +292,18 @@ func (m *Addresses) GetAddress() []*Address {
 	return nil
 }
 
+func (m *Addresses) GetPagination() *Pagination {
+	if m != nil {
+		return m.Pagination
+	}
+	return nil
+}
+
 func init() {
 	proto.RegisterType((*AddressGetOptions)(nil), "proto.AddressGetOptions")
 	proto.RegisterType((*AddressGetByPathOptions)(nil), "proto.AddressGetByPathOptions")
 	proto.RegisterType((*AddressGetMultiOptions)(nil), "proto.AddressGetMultiOptions")
+	proto.RegisterType((*AddressListOptions)(nil), "proto.AddressListOptions")
 	proto.RegisterType((*Address)(nil), "proto.Address")
 	proto.RegisterType((*Addresses)(nil), "proto.Addresses")
 }
@@ -275,6 +322,7 @@ const _ = grpc.SupportPackageIsVersion4
 type AddressServiceClient interface {
 	Get(ctx context.Context, in *AddressGetOptions, opts ...grpc.CallOption) (*Address, error)
 	GetMulti(ctx context.Context, in *AddressGetMultiOptions, opts ...grpc.CallOption) (*Addresses, error)
+	List(ctx context.Context, in *AddressListOptions, opts ...grpc.CallOption) (*Addresses, error)
 }
 
 type addressServiceClient struct {
@@ -303,10 +351,20 @@ func (c *addressServiceClient) GetMulti(ctx context.Context, in *AddressGetMulti
 	return out, nil
 }
 
+func (c *addressServiceClient) List(ctx context.Context, in *AddressListOptions, opts ...grpc.CallOption) (*Addresses, error) {
+	out := new(Addresses)
+	err := c.cc.Invoke(ctx, "/proto.AddressService/List", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AddressServiceServer is the server API for AddressService service.
 type AddressServiceServer interface {
 	Get(context.Context, *AddressGetOptions) (*Address, error)
 	GetMulti(context.Context, *AddressGetMultiOptions) (*Addresses, error)
+	List(context.Context, *AddressListOptions) (*Addresses, error)
 }
 
 func RegisterAddressServiceServer(s *grpc.Server, srv AddressServiceServer) {
@@ -349,6 +407,24 @@ func _AddressService_GetMulti_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AddressService_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddressListOptions)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AddressServiceServer).List(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/proto.AddressService/List",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AddressServiceServer).List(ctx, req.(*AddressListOptions))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _AddressService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "proto.AddressService",
 	HandlerType: (*AddressServiceServer)(nil),
@@ -361,31 +437,38 @@ var _AddressService_serviceDesc = grpc.ServiceDesc{
 			MethodName: "GetMulti",
 			Handler:    _AddressService_GetMulti_Handler,
 		},
+		{
+			MethodName: "List",
+			Handler:    _AddressService_List_Handler,
+		},
 	},
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "address.proto",
 }
 
-func init() { proto.RegisterFile("address.proto", fileDescriptor_address_21f6eb8670ed08d0) }
+func init() { proto.RegisterFile("address.proto", fileDescriptor_address_0c4b1f5c1984055f) }
 
-var fileDescriptor_address_21f6eb8670ed08d0 = []byte{
-	// 273 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x90, 0x4f, 0x4b, 0xc3, 0x40,
-	0x10, 0xc5, 0xbb, 0x49, 0x5b, 0xcd, 0xd4, 0x86, 0x3a, 0x88, 0x2e, 0x01, 0x21, 0x2c, 0x08, 0x41,
-	0xb0, 0x60, 0xc4, 0xa3, 0x07, 0xbd, 0xf4, 0x62, 0x51, 0xe2, 0x27, 0xd8, 0x76, 0x97, 0x76, 0xa5,
-	0x98, 0x90, 0x5d, 0x85, 0x5e, 0xfd, 0xe4, 0xe2, 0xfe, 0x31, 0x56, 0x6f, 0x3d, 0x65, 0xf2, 0x9b,
-	0x37, 0x6f, 0x66, 0x1f, 0x8c, 0xb9, 0x10, 0xad, 0xd4, 0x7a, 0xda, 0xb4, 0xb5, 0xa9, 0x71, 0x60,
-	0x3f, 0xd9, 0xd1, 0x46, 0xae, 0xf8, 0x72, 0xeb, 0x20, 0x9b, 0xc3, 0xf1, 0xbd, 0x53, 0xcd, 0xa4,
-	0x79, 0x6a, 0x8c, 0xaa, 0xdf, 0x34, 0xa6, 0x10, 0x29, 0x41, 0x49, 0x4e, 0x8a, 0xa4, 0x8a, 0x94,
-	0x40, 0x84, 0x7e, 0xc3, 0xcd, 0x9a, 0x46, 0x96, 0xd8, 0x1a, 0x4f, 0x60, 0xb0, 0xe0, 0x2b, 0x25,
-	0x68, 0x6c, 0xa1, 0xfb, 0x61, 0x57, 0x70, 0xd6, 0xd9, 0x3d, 0x6c, 0x9f, 0xb9, 0x59, 0x07, 0xd3,
-	0x60, 0x42, 0x3a, 0x13, 0x76, 0x09, 0xa7, 0x9d, 0x7c, 0xfe, 0xbe, 0x31, 0x2a, 0xa8, 0x27, 0x10,
-	0x2b, 0xa1, 0x29, 0xc9, 0xe3, 0x22, 0xa9, 0xbe, 0x4b, 0xf6, 0x0a, 0x07, 0x5e, 0xbb, 0xff, 0x7d,
-	0x78, 0x01, 0xc3, 0x47, 0xfb, 0x7c, 0xda, 0xcf, 0x49, 0x31, 0x2a, 0xc7, 0x2e, 0x86, 0xa9, 0x83,
-	0x95, 0x6f, 0xb2, 0x5b, 0x48, 0xfc, 0x2e, 0xa9, 0xb1, 0xf8, 0x59, 0x6c, 0xcf, 0x19, 0x95, 0xa9,
-	0x1f, 0xf2, 0xb4, 0x0a, 0xed, 0xf2, 0x93, 0x40, 0xea, 0xeb, 0x17, 0xd9, 0x7e, 0xa8, 0xa5, 0xc4,
-	0x6b, 0x88, 0x67, 0xd2, 0x20, 0xdd, 0x1d, 0xe9, 0xb2, 0xce, 0xfe, 0x98, 0xb1, 0x1e, 0xde, 0xc1,
-	0x61, 0x48, 0x03, 0xcf, 0xff, 0xcd, 0xfd, 0x4e, 0x29, 0x9b, 0xec, 0xb6, 0xa5, 0x66, 0xbd, 0xc5,
-	0xd0, 0xa2, 0x9b, 0xaf, 0x00, 0x00, 0x00, 0xff, 0xff, 0x6a, 0x8d, 0xc9, 0x97, 0xfe, 0x01, 0x00,
-	0x00,
+var fileDescriptor_address_0c4b1f5c1984055f = []byte{
+	// 324 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x51, 0x5f, 0x4b, 0xfb, 0x30,
+	0x14, 0xfd, 0xb5, 0xdd, 0xf6, 0x73, 0x77, 0x6e, 0x6c, 0x17, 0xd1, 0x58, 0x10, 0x46, 0x40, 0x18,
+	0x82, 0x83, 0x4d, 0x7c, 0xf4, 0x41, 0x5f, 0xf6, 0xb2, 0xe1, 0xa8, 0x9f, 0x20, 0x5b, 0xc2, 0x1a,
+	0x19, 0x6b, 0x69, 0xa2, 0xb0, 0x8f, 0xe6, 0xb7, 0x93, 0x26, 0xe9, 0x3f, 0xf5, 0x41, 0x7c, 0x6a,
+	0x7a, 0xee, 0x3d, 0xe7, 0xe4, 0xe4, 0x40, 0x9f, 0x71, 0x9e, 0x09, 0xa5, 0xa6, 0x69, 0x96, 0xe8,
+	0x04, 0xdb, 0xe6, 0x13, 0x9e, 0xee, 0xc5, 0x8e, 0x6d, 0x8f, 0x16, 0x0c, 0x87, 0x29, 0xdb, 0xc9,
+	0x03, 0xd3, 0x32, 0x39, 0x58, 0x84, 0xae, 0x60, 0xf4, 0x68, 0x79, 0x0b, 0xa1, 0x9f, 0xd3, 0x7c,
+	0xa2, 0x70, 0x00, 0xbe, 0xe4, 0xc4, 0x1b, 0x7b, 0x93, 0x6e, 0xe4, 0x4b, 0x8e, 0x08, 0xad, 0x94,
+	0xe9, 0x98, 0xf8, 0x06, 0x31, 0x67, 0x3c, 0x83, 0xf6, 0x86, 0xed, 0x24, 0x27, 0x81, 0x01, 0xed,
+	0x0f, 0xbd, 0x85, 0x8b, 0x4a, 0xee, 0xe9, 0xb8, 0x66, 0x3a, 0x2e, 0x44, 0x0b, 0x11, 0xaf, 0x12,
+	0xa1, 0x37, 0x70, 0x5e, 0xad, 0xaf, 0xde, 0xf6, 0x5a, 0x16, 0xdb, 0x43, 0x08, 0x24, 0x57, 0xc4,
+	0x1b, 0x07, 0x93, 0x6e, 0x94, 0x1f, 0xe9, 0x02, 0xd0, 0xed, 0x2e, 0xa5, 0x2a, 0xaf, 0x3a, 0x03,
+	0x58, 0x97, 0x99, 0x8c, 0x76, 0x6f, 0x3e, 0xb2, 0xd9, 0xa6, 0xd5, 0x20, 0xaa, 0x2d, 0xd1, 0x57,
+	0xf8, 0xef, 0x84, 0xfe, 0x1e, 0x14, 0xaf, 0xa1, 0xb3, 0x34, 0x2f, 0x4b, 0x5a, 0xc6, 0xb3, 0xef,
+	0x3c, 0x2d, 0x18, 0xb9, 0x21, 0x8d, 0xa1, 0xeb, 0xbc, 0x84, 0xc2, 0x49, 0x69, 0x6c, 0x72, 0xf5,
+	0xe6, 0x03, 0x47, 0x72, 0x68, 0x54, 0xde, 0xab, 0x99, 0xca, 0xff, 0x45, 0xaa, 0xf9, 0x87, 0x07,
+	0x03, 0x47, 0x7f, 0x11, 0xd9, 0xbb, 0xdc, 0x0a, 0x9c, 0x41, 0xb0, 0x10, 0x1a, 0x49, 0xd3, 0xa5,
+	0xea, 0x39, 0xfc, 0xe2, 0x4f, 0xff, 0xe1, 0x03, 0x9c, 0x14, 0x4d, 0xe0, 0xd5, 0x37, 0x5e, 0xbd,
+	0xa1, 0x70, 0xd8, 0x1c, 0x8b, 0x9c, 0x7e, 0x0f, 0xad, 0xbc, 0x1c, 0xbc, 0x6c, 0xce, 0x6a, 0x85,
+	0xfd, 0x44, 0xdb, 0x74, 0x0c, 0x74, 0xf7, 0x19, 0x00, 0x00, 0xff, 0xff, 0xce, 0x00, 0xe1, 0x12,
+	0xc3, 0x02, 0x00, 0x00,
 }
