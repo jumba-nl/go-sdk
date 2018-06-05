@@ -14,7 +14,7 @@ var defaultBackendHost = "api.jumba.nl:443"
 var client *Client
 
 func CreateContext(token string) context.Context {
-	md := metadata.Pairs("token", token)
+	md := metadata.Pairs(":authorization", "Bearer "+token)
 	return metadata.NewOutgoingContext(context.Background(), md)
 }
 
