@@ -19,7 +19,7 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 type Legacy struct {
-	Source               []byte   `protobuf:"bytes,1,opt,name=Source,proto3" json:"Source,omitempty"`
+	Source               []byte   `protobuf:"bytes,1,opt,name=source,proto3" json:"source,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -29,7 +29,7 @@ func (m *Legacy) Reset()         { *m = Legacy{} }
 func (m *Legacy) String() string { return proto.CompactTextString(m) }
 func (*Legacy) ProtoMessage()    {}
 func (*Legacy) Descriptor() ([]byte, []int) {
-	return fileDescriptor_legacy_be5bb59a1e165af1, []int{0}
+	return fileDescriptor_legacy_9676e085e4705f53, []int{0}
 }
 func (m *Legacy) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Legacy.Unmarshal(m, b)
@@ -60,13 +60,13 @@ func init() {
 	proto.RegisterType((*Legacy)(nil), "proto.Legacy")
 }
 
-func init() { proto.RegisterFile("legacy.proto", fileDescriptor_legacy_be5bb59a1e165af1) }
+func init() { proto.RegisterFile("legacy.proto", fileDescriptor_legacy_9676e085e4705f53) }
 
-var fileDescriptor_legacy_be5bb59a1e165af1 = []byte{
+var fileDescriptor_legacy_9676e085e4705f53 = []byte{
 	// 72 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0xc9, 0x49, 0x4d, 0x4f,
 	0x4c, 0xae, 0xd4, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x62, 0x05, 0x53, 0x4a, 0x0a, 0x5c, 0x6c,
-	0x3e, 0x60, 0x61, 0x21, 0x31, 0x2e, 0xb6, 0xe0, 0xfc, 0xd2, 0xa2, 0xe4, 0x54, 0x09, 0x46, 0x05,
+	0x3e, 0x60, 0x61, 0x21, 0x31, 0x2e, 0xb6, 0xe2, 0xfc, 0xd2, 0xa2, 0xe4, 0x54, 0x09, 0x46, 0x05,
 	0x46, 0x0d, 0x9e, 0x20, 0x28, 0x2f, 0x89, 0x0d, 0xac, 0xd0, 0x18, 0x10, 0x00, 0x00, 0xff, 0xff,
-	0x54, 0x06, 0xf4, 0x46, 0x3f, 0x00, 0x00, 0x00,
+	0x2c, 0xdd, 0x2f, 0xbd, 0x3f, 0x00, 0x00, 0x00,
 }

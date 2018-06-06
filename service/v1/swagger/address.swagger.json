@@ -55,7 +55,7 @@
         "bagid": {
           "type": "string"
         },
-        "Legacy": {
+        "legacy": {
           "$ref": "#/definitions/protoLegacy"
         }
       }
@@ -63,7 +63,7 @@
     "protoAddressListOptions": {
       "type": "object",
       "properties": {
-        "Pagination": {
+        "pagination": {
           "$ref": "#/definitions/protoPagination"
         }
       }
@@ -71,13 +71,13 @@
     "protoAddresses": {
       "type": "object",
       "properties": {
-        "Address": {
+        "addresses": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/protoAddress"
           }
         },
-        "Pagination": {
+        "pagination": {
           "$ref": "#/definitions/protoPagination"
         }
       }
@@ -85,7 +85,7 @@
     "protoLegacy": {
       "type": "object",
       "properties": {
-        "Source": {
+        "source": {
           "type": "string",
           "format": "byte"
         }
@@ -94,22 +94,22 @@
     "protoPagination": {
       "type": "object",
       "properties": {
-        "Total": {
+        "total": {
           "type": "string",
           "format": "int64"
         },
-        "Limit": {
+        "limit": {
           "type": "string",
           "format": "int64"
         },
-        "Offset": {
+        "offset": {
           "type": "string",
           "format": "int64"
         },
-        "Cursor": {
+        "cursor": {
           "type": "string"
         },
-        "Next": {
+        "next": {
           "type": "string"
         }
       }
