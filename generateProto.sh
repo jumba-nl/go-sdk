@@ -12,7 +12,7 @@ protoc -I/usr/local/include \
     -I$GOPATH/src \
     -I$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
     -I=../proto/v1 \
-    --grpc-gateway_out=logtostderr=true,import_path=gateway_v1:./service/v1/gateway \
+    --grpc-gateway_out=logtostderr=true,import_path=api_v1:./service/v1 \
     ../proto/v1/*.proto
 
 
