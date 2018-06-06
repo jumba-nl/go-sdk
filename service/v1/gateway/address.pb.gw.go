@@ -2,11 +2,11 @@
 // source: address.proto
 
 /*
-Package proto is a reverse proxy.
+Package gateway_v1 is a reverse proxy.
 
 It translates gRPC into RESTful JSON APIs.
 */
-package proto
+package gateway_v1
 
 import (
 	"io"
