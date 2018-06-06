@@ -3,7 +3,6 @@ package client
 import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
-	"github.com/jumba-nl/go-sdk/credential"
 	"crypto/tls"
 	"google.golang.org/grpc/metadata"
 	"context"
@@ -63,7 +62,7 @@ func (c *Client) Open() error {
 		dialOptions = append(dialOptions, grpc.WithTransportCredentials(creds))
 	}
 
-	dialOptions = append(dialOptions, grpc.WithPerRPCCredentials(&credential.TokenCreds{Token: c.Token}))
+	//dialOptions = append(dialOptions, grpc.WithPerRPCCredentials(&credential.TokenCreds{Token: c.Token}))
 
 	c.Conn, err = grpc.Dial(
 		c.Host,
