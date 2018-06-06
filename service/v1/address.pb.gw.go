@@ -28,11 +28,15 @@ var _ status.Status
 var _ = runtime.String
 var _ = utilities.NewDoubleArray
 
+var (
+	filter_AddressService_List_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
+)
+
 func request_AddressService_List_0(ctx context.Context, marshaler runtime.Marshaler, client AddressServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq AddressListOptions
 	var metadata runtime.ServerMetadata
 
-	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.URL.Query(), filter_AddressService_List_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
@@ -79,7 +83,7 @@ func RegisterAddressServiceHandler(ctx context.Context, mux *runtime.ServeMux, c
 // "AddressServiceClient" to call the correct interceptors.
 func RegisterAddressServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux, client AddressServiceClient) error {
 
-	mux.Handle("POST", pattern_AddressService_List_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_AddressService_List_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		if cn, ok := w.(http.CloseNotifier); ok {

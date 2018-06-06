@@ -16,7 +16,7 @@
   ],
   "paths": {
     "/v1/address/list": {
-      "post": {
+      "get": {
         "operationId": "List",
         "responses": {
           "200": {
@@ -28,12 +28,37 @@
         },
         "parameters": [
           {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/protoAddressListOptions"
-            }
+            "name": "pagination.total",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pagination.limit",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pagination.offset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pagination.cursor",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pagination.next",
+            "in": "query",
+            "required": false,
+            "type": "string"
           }
         ],
         "tags": [
@@ -57,14 +82,6 @@
         },
         "legacy": {
           "$ref": "#/definitions/protoLegacy"
-        }
-      }
-    },
-    "protoAddressListOptions": {
-      "type": "object",
-      "properties": {
-        "pagination": {
-          "$ref": "#/definitions/protoPagination"
         }
       }
     },
