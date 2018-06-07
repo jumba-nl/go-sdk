@@ -22,7 +22,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/protoAddress"
+              "$ref": "#/definitions/api_v1Address"
             }
           }
         },
@@ -58,7 +58,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/protoAddresses"
+              "$ref": "#/definitions/api_v1Addresses"
             }
           }
         },
@@ -85,7 +85,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/protoAddresses"
+              "$ref": "#/definitions/api_v1Addresses"
             }
           }
         },
@@ -136,7 +136,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/protoAddress"
+              "$ref": "#/definitions/api_v1Address"
             }
           }
         },
@@ -146,7 +146,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/protoAddress"
+              "$ref": "#/definitions/api_v1Address"
             }
           }
         ],
@@ -157,7 +157,7 @@
     }
   },
   "definitions": {
-    "protoAddress": {
+    "api_v1Address": {
       "type": "object",
       "properties": {
         "id": {
@@ -170,25 +170,25 @@
           "type": "string"
         },
         "legacy": {
-          "$ref": "#/definitions/protoLegacy"
+          "$ref": "#/definitions/api_v1Legacy"
         }
       }
     },
-    "protoAddresses": {
+    "api_v1Addresses": {
       "type": "object",
       "properties": {
         "addresses": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/protoAddress"
+            "$ref": "#/definitions/api_v1Address"
           }
         },
         "pagination": {
-          "$ref": "#/definitions/protoPagination"
+          "$ref": "#/definitions/api_v1Pagination"
         }
       }
     },
-    "protoLegacy": {
+    "api_v1Legacy": {
       "type": "object",
       "properties": {
         "source": {
@@ -197,7 +197,7 @@
         }
       }
     },
-    "protoPagination": {
+    "api_v1Pagination": {
       "type": "object",
       "properties": {
         "total": {

@@ -16,7 +16,7 @@
   ],
   "paths": {},
   "definitions": {
-    "protoProfile": {
+    "api_v1Profile": {
       "type": "object",
       "properties": {
         "id": {
