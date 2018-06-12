@@ -3,9 +3,11 @@ package model
 import (
 	"encoding/json"
 	"time"
+
 	"log"
 )
 
+// swagger:model Search
 type Search struct {
 	Input        SearchInput
 	Filter       SearchFilter
@@ -159,7 +161,7 @@ func (m *maybe) UnmarshalJSON(b []byte) error {
 	var value string
 	if err := json.Unmarshal(b, &value); err != nil {
 		// Just log the error, nothing we can do about this.
-		log.Println(err.Error())
+		log.Println(err)
 	} else {
 		*m = maybe(value)
 	}
@@ -179,8 +181,7 @@ type mapStringString map[string]string
 func (mss *mapStringString) UnmarshalJSON(b []byte) error {
 	var value map[string]string
 	if err := json.Unmarshal(b, &value); err != nil {
-		log.Println(err.Error())
-
+		log.Println(err)
 	} else {
 		*mss = mapStringString(value)
 	}
@@ -482,9 +483,8 @@ type CombinedLivingScores struct {
 }
 
 type CombinedFinancial struct {
-	Labels       []string `bson:"Labels,omitempty" json:",omitempty"`
-	Data         []int64  `bson:"Data,omitempty" json:",omitempty"`
-	PriceHistory []Price  `json:",omitempty"`
+	Labels []string `bson:"Labels,omitempty" json:",omitempty"`
+	Data   []int64  `bson:"Data,omitempty" json:",omitempty"`
 }
 
 type Address struct {
