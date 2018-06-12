@@ -8,7 +8,7 @@ type TokenCreds struct {
 
 func (c *TokenCreds) GetRequestMetadata(context.Context, ...string) (map[string]string, error) {
 	return map[string]string{
-		"authorization": "Bearer " + c.Token,
+		"authorization": "Basic " + c.Token,
 	}, nil
 }
 
