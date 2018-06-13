@@ -16,10 +16,10 @@ protoc -I/usr/local/include \
     ../proto/v1/*.proto
 
 
-protoc -I/usr/local/include \
-    -I. \
-    -I$GOPATH/src \
-    -I$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
-    -I=../proto/v1 \
-    --swagger_out=logtostderr=true:./service/v1/swagger \
-    ../proto/v1/*.proto
+#protoc -I/usr/local/include \
+#    -I. \
+#    -I$GOPATH/src \
+#    -I$GOPATH/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis \
+#    -I=../proto/v1 \
+#    --swagger_out=logtostderr=true:./service/v1/swagger \
+#    ../proto/v1/*.proto
