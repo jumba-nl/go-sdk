@@ -143,6 +143,8 @@ func LoadDefaultData(w http.ResponseWriter, r *http.Request, data *Data) {
 	} else {
 		data.SavedPath = path
 	}
+
+	saveReferrer(w, r)
 }
 
 var matchingURLBlacklist = []string{"/login", "/404", "/logout", "/registratie", "/registratie/verstuurd", "/payment/data", "/favicon.ico", "/img/favicon.ico"}
@@ -157,6 +159,15 @@ func savePath(w http.ResponseWriter, path string) {
 
 	cookie := &http.Cookie{Name: "jmb_cpth", Value: path, Path: "/", Expires: time.Now().Add(time.Hour * 1)}
 	http.SetCookie(w, cookie)
+}
+
+func saveReferrer(w http.ResponseWriter, r *http.Request) {
+	referrer := r.Referer()
+	if referrer != "" {
+		if uri, err := url.Parse(r.Referer()); err == nil {
+			http.SetCookie(w, &http.Cookie{Name: "jmb_referrer", Value: uri.Path, Path: "/"})
+		}
+	}
 }
 
 func isURLBlacklisted(url string) bool {
