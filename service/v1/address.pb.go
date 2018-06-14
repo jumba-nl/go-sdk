@@ -35,7 +35,7 @@ func (m *AddressIndexOptions) Reset()         { *m = AddressIndexOptions{} }
 func (m *AddressIndexOptions) String() string { return proto.CompactTextString(m) }
 func (*AddressIndexOptions) ProtoMessage()    {}
 func (*AddressIndexOptions) Descriptor() ([]byte, []int) {
-	return fileDescriptor_address_9f85771feeb5c4fc, []int{0}
+	return fileDescriptor_address_157e2af0466f2217, []int{0}
 }
 func (m *AddressIndexOptions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddressIndexOptions.Unmarshal(m, b)
@@ -73,7 +73,7 @@ func (m *AddressIndexResponse) Reset()         { *m = AddressIndexResponse{} }
 func (m *AddressIndexResponse) String() string { return proto.CompactTextString(m) }
 func (*AddressIndexResponse) ProtoMessage()    {}
 func (*AddressIndexResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_address_9f85771feeb5c4fc, []int{1}
+	return fileDescriptor_address_157e2af0466f2217, []int{1}
 }
 func (m *AddressIndexResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddressIndexResponse.Unmarshal(m, b)
@@ -113,7 +113,7 @@ func (m *AddressSuggestOptions) Reset()         { *m = AddressSuggestOptions{} }
 func (m *AddressSuggestOptions) String() string { return proto.CompactTextString(m) }
 func (*AddressSuggestOptions) ProtoMessage()    {}
 func (*AddressSuggestOptions) Descriptor() ([]byte, []int) {
-	return fileDescriptor_address_9f85771feeb5c4fc, []int{2}
+	return fileDescriptor_address_157e2af0466f2217, []int{2}
 }
 func (m *AddressSuggestOptions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddressSuggestOptions.Unmarshal(m, b)
@@ -167,7 +167,7 @@ func (m *AddressGetOptions) Reset()         { *m = AddressGetOptions{} }
 func (m *AddressGetOptions) String() string { return proto.CompactTextString(m) }
 func (*AddressGetOptions) ProtoMessage()    {}
 func (*AddressGetOptions) Descriptor() ([]byte, []int) {
-	return fileDescriptor_address_9f85771feeb5c4fc, []int{3}
+	return fileDescriptor_address_157e2af0466f2217, []int{3}
 }
 func (m *AddressGetOptions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddressGetOptions.Unmarshal(m, b)
@@ -219,7 +219,7 @@ func (m *AddressGetByPathOptions) Reset()         { *m = AddressGetByPathOptions
 func (m *AddressGetByPathOptions) String() string { return proto.CompactTextString(m) }
 func (*AddressGetByPathOptions) ProtoMessage()    {}
 func (*AddressGetByPathOptions) Descriptor() ([]byte, []int) {
-	return fileDescriptor_address_9f85771feeb5c4fc, []int{4}
+	return fileDescriptor_address_157e2af0466f2217, []int{4}
 }
 func (m *AddressGetByPathOptions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddressGetByPathOptions.Unmarshal(m, b)
@@ -257,7 +257,7 @@ func (m *AddressGetMultiOptions) Reset()         { *m = AddressGetMultiOptions{}
 func (m *AddressGetMultiOptions) String() string { return proto.CompactTextString(m) }
 func (*AddressGetMultiOptions) ProtoMessage()    {}
 func (*AddressGetMultiOptions) Descriptor() ([]byte, []int) {
-	return fileDescriptor_address_9f85771feeb5c4fc, []int{5}
+	return fileDescriptor_address_157e2af0466f2217, []int{5}
 }
 func (m *AddressGetMultiOptions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddressGetMultiOptions.Unmarshal(m, b)
@@ -295,7 +295,7 @@ func (m *AddressListOptions) Reset()         { *m = AddressListOptions{} }
 func (m *AddressListOptions) String() string { return proto.CompactTextString(m) }
 func (*AddressListOptions) ProtoMessage()    {}
 func (*AddressListOptions) Descriptor() ([]byte, []int) {
-	return fileDescriptor_address_9f85771feeb5c4fc, []int{6}
+	return fileDescriptor_address_157e2af0466f2217, []int{6}
 }
 func (m *AddressListOptions) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_AddressListOptions.Unmarshal(m, b)
@@ -323,12 +323,15 @@ func (m *AddressListOptions) GetPagination() *Pagination {
 }
 
 type Address struct {
-	Id                   string   `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	Path                 string   `protobuf:"bytes,2,opt,name=path" json:"path,omitempty"`
-	Bagid                string   `protobuf:"bytes,3,opt,name=bagid" json:"bagid,omitempty"`
-	Legacy               *Legacy  `protobuf:"bytes,4,opt,name=legacy" json:"legacy,omitempty"`
-	Forsale              bool     `protobuf:"varint,6,opt,name=forsale" json:"forsale,omitempty"`
-	Label                string   `protobuf:"bytes,7,opt,name=label" json:"label,omitempty"`
+	Id    string `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	Path  string `protobuf:"bytes,2,opt,name=path" json:"path,omitempty"`
+	Bagid string `protobuf:"bytes,3,opt,name=bagid" json:"bagid,omitempty"`
+	// @inject_tag: datastore:",noindex"
+	Legacy *Legacy `protobuf:"bytes,4,opt,name=legacy" json:"legacy,omitempty" datastore:",noindex"`
+	// @inject_tag: datastore:",noindex"
+	Forsale bool `protobuf:"varint,6,opt,name=forsale" json:"forsale,omitempty" datastore:",noindex"`
+	// @inject_tag: datastore:",noindex"
+	Label                string   `protobuf:"bytes,7,opt,name=label" json:"label,omitempty" datastore:",noindex"`
 	Type                 int64    `protobuf:"varint,8,opt,name=type" json:"type,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -339,7 +342,7 @@ func (m *Address) Reset()         { *m = Address{} }
 func (m *Address) String() string { return proto.CompactTextString(m) }
 func (*Address) ProtoMessage()    {}
 func (*Address) Descriptor() ([]byte, []int) {
-	return fileDescriptor_address_9f85771feeb5c4fc, []int{7}
+	return fileDescriptor_address_157e2af0466f2217, []int{7}
 }
 func (m *Address) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Address.Unmarshal(m, b)
@@ -420,7 +423,7 @@ func (m *Addresses) Reset()         { *m = Addresses{} }
 func (m *Addresses) String() string { return proto.CompactTextString(m) }
 func (*Addresses) ProtoMessage()    {}
 func (*Addresses) Descriptor() ([]byte, []int) {
-	return fileDescriptor_address_9f85771feeb5c4fc, []int{8}
+	return fileDescriptor_address_157e2af0466f2217, []int{8}
 }
 func (m *Addresses) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Addresses.Unmarshal(m, b)
@@ -703,9 +706,9 @@ var _AddressService_serviceDesc = grpc.ServiceDesc{
 	Metadata: "address.proto",
 }
 
-func init() { proto.RegisterFile("address.proto", fileDescriptor_address_9f85771feeb5c4fc) }
+func init() { proto.RegisterFile("address.proto", fileDescriptor_address_157e2af0466f2217) }
 
-var fileDescriptor_address_9f85771feeb5c4fc = []byte{
+var fileDescriptor_address_157e2af0466f2217 = []byte{
 	// 546 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x94, 0x5d, 0x6e, 0xd3, 0x40,
 	0x10, 0xc7, 0xeb, 0x38, 0x5f, 0x9e, 0x42, 0x9a, 0x0c, 0xa1, 0x35, 0x26, 0xa0, 0x68, 0x25, 0x50,
