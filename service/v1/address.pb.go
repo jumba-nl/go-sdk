@@ -333,9 +333,12 @@ type Address struct {
 	// @inject_tag: datastore:",noindex"
 	Label                string   `protobuf:"bytes,7,opt,name=label" json:"label,omitempty" datastore:",noindex"`
 	Type                 int64    `protobuf:"varint,8,opt,name=type" json:"type,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	// @inject_tag: datastore:"-"
+	XXX_NoUnkeyedLiteral struct{} `json:"-" datastore:"-"`
+	// @inject_tag: datastore:"-"
+	XXX_unrecognized     []byte   `json:"-" datastore:"-"`
+	// @inject_tag: datastore:"-"
+	XXX_sizecache        int32    `json:"-" datastore:"-"`
 }
 
 func (m *Address) Reset()         { *m = Address{} }

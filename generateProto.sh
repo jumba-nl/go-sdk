@@ -15,6 +15,8 @@ protoc -I/usr/local/include \
     --grpc-gateway_out=logtostderr=true,import_path=api_v1:./service/v1 \
     ../proto/v1/*.proto
 
+protoc-go-inject-tag -input=./service/v1/address.pb.go
+protoc-go-inject-tag -input=./service/v1/legacy.pb.go
 
 #protoc -I/usr/local/include \
 #    -I. \
