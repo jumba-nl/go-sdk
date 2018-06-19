@@ -21,11 +21,8 @@ const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 type Legacy struct {
 	// @inject_tag: datastore:",noindex"
 	Source               []byte   `protobuf:"bytes,1,opt,name=source,proto3" json:"source,omitempty" datastore:",noindex"`
-	// @inject_tag: datastore:"-"
 	XXX_NoUnkeyedLiteral struct{} `json:"-" datastore:"-"`
-	// @inject_tag: datastore:"-"
 	XXX_unrecognized     []byte   `json:"-" datastore:"-"`
-	// @inject_tag: datastore:"-"
 	XXX_sizecache        int32    `json:"-" datastore:"-"`
 }
 
