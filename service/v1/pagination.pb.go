@@ -19,11 +19,11 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 type Pagination struct {
-	Total                int64    `protobuf:"varint,1,opt,name=total" json:"total,omitempty"`
-	Limit                int64    `protobuf:"varint,2,opt,name=limit" json:"limit,omitempty"`
-	Offset               int64    `protobuf:"varint,3,opt,name=offset" json:"offset,omitempty"`
-	Cursor               string   `protobuf:"bytes,4,opt,name=cursor" json:"cursor,omitempty"`
-	Next                 string   `protobuf:"bytes,5,opt,name=next" json:"next,omitempty"`
+	Total                int64    `protobuf:"varint,1,opt,name=total,proto3" json:"total,omitempty"`
+	Limit                int64    `protobuf:"varint,2,opt,name=limit,proto3" json:"limit,omitempty"`
+	Offset               int64    `protobuf:"varint,3,opt,name=offset,proto3" json:"offset,omitempty"`
+	Cursor               string   `protobuf:"bytes,4,opt,name=cursor,proto3" json:"cursor,omitempty"`
+	Next                 string   `protobuf:"bytes,5,opt,name=next,proto3" json:"next,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`

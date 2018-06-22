@@ -110,8 +110,8 @@ func RegisterAddressServiceHandler(ctx context.Context, mux *runtime.ServeMux, c
 	return RegisterAddressServiceHandlerClient(ctx, mux, NewAddressServiceClient(conn))
 }
 
-// RegisterAddressServiceHandler registers the http handlers for service AddressService to "mux".
-// The handlers forward requests to the grpc endpoint over the given implementation of "AddressServiceClient".
+// RegisterAddressServiceHandlerClient registers the http handlers for service AddressService
+// to "mux". The handlers forward requests to the grpc endpoint over the given implementation of "AddressServiceClient".
 // Note: the gRPC framework executes interceptors within the gRPC handler. If the passed in "AddressServiceClient"
 // doesn't go through the normal gRPC flow (creating a gRPC client etc.) then it will be up to the passed in
 // "AddressServiceClient" to call the correct interceptors.
