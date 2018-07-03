@@ -12,9 +12,9 @@ const NOTIF_TYPE_MODIFIED = "modified-property"
 const NOTIF_TYPE_QUERY = "modified-query"
 const NOTIF_TYPE_NEIGHBOURHOOD = "neighbourhood"
 
-const NOTIF_PROPERTY_MAIL_TMPL = "jumba-property-updated"
-const NOTIF_PROPERTIES_MAIL_TMPL = "jumba-properties-updated"
-const NOTIF_NEIGHBOURHOOD_MAIL_TMPL = "jumba-neighbourhood-updated"
+const NOTIF_PROPERTY_MAIL_TMPL = "property-updated"
+const NOTIF_PROPERTIES_MAIL_TMPL = "properties-updated"
+const NOTIF_NEIGHBOURHOOD_MAIL_TMPL = "neighbourhood-updated"
 
 const NOTIF_CHANGE_PRICE = "De huidige prijs is van € %s naar € %s veranderd."
 const NOTIF_CHANGE_FORSALE_TRUE = "De woning staat nu te koop."
