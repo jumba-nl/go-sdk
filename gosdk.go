@@ -1,5 +1,5 @@
 package gosdk
 
-func GetVersion() {
+func GetVersion() string {
 	return "alpha"
 }

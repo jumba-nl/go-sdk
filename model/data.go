@@ -17,8 +17,8 @@ type Data struct {
 	Statistics           map[string]interface{}
 	Payload              interface{}
 	Request              interface{}
-	Total                int64 // deprecated
 	Config               *Configuration
+	Total                int64    // deprecated
 	NotFound             bool     // deprecated
 	TotalForSale         int64    // deprecated
 	CDN                  string   // deprecated
@@ -136,15 +136,22 @@ func LoadDefaultData(w http.ResponseWriter, r *http.Request, data *Data) {
 		}
 	}
 
+	// path is /, therefore we conclude that the user came from the homepage
+	// therefore set saved path towards the mijn env
+	if path == "/" {
+		data.SavedPath = "/mijn/"
+		return
+	}
+
 	// means we don't have a redirect cookie or if a user is redirect to a logged in page
 	// if we don't do this user will end up in an endless loop
 	if path == r.URL.Path || (len(path) >= 6 && path[:6] == "/mijn/" && r.URL.Path == "/logout") {
 		data.SavedPath = "/"
-	} else {
-		data.SavedPath = path
+		return
 	}
 
-	saveReferrer(w, r)
+	// save path
+	data.SavedPath = path
 }
 
 var matchingURLBlacklist = []string{"/login", "/404", "/logout", "/registratie", "/registratie/verstuurd", "/payment/data", "/favicon.ico", "/img/favicon.ico"}
@@ -159,15 +166,6 @@ func savePath(w http.ResponseWriter, path string) {
 
 	cookie := &http.Cookie{Name: "jmb_cpth", Value: path, Path: "/", Expires: time.Now().Add(time.Hour * 1)}
 	http.SetCookie(w, cookie)
-}
-
-func saveReferrer(w http.ResponseWriter, r *http.Request) {
-	referrer := r.Referer()
-	if referrer != "" {
-		if uri, err := url.Parse(r.Referer()); err == nil {
-			http.SetCookie(w, &http.Cookie{Name: "jmb_referrer", Value: uri.Path, Path: "/"})
-		}
-	}
 }
 
 func isURLBlacklisted(url string) bool {
