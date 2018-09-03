@@ -1,18 +1,11 @@
 package model
 
 import (
-	"encoding/json"
-	"errors"
 	"time"
 
 	"log"
 
-	"github.com/jumba-nl/jumba/ext/config"
-
-	"golang.org/x/net/context"
-
 	"gopkg.in/mgo.v2/bson"
-	"gopkg.in/olivere/elastic.v5"
 )
 
 // swagger:model Status
@@ -110,72 +103,6 @@ func CreateStatusModel(search Search) Status {
 	}
 
 	return status
-}
-
-func FetchProperty(id string) (Search, int64) {
-	// trim all spaces to reduce failure rate
-	id, _ = FormatIdentifier(id)
-
-	query := elastic.NewBoolQuery().MinimumShouldMatch("1")
-	// because ID and BagVBOID is analyzed we can't use a term query
-	// this means we'll have to filter the results afterwards
-	query = query.Should(
-		elastic.NewMatchQuery("Payload.ID", id),
-		elastic.NewMatchQuery("Payload.BagVBOID", id),
-	)
-	response, err := config.Config.ElasticSearch.Client.Search().
-		Index(config.Config.ElasticSearch.Index).
-		Type(config.Config.ElasticSearch.Type).
-		Query(query).
-		Do(context.TODO())
-	if err != nil {
-		log.Println(err)
-		return Search{}, 0
-	}
-
-	var hits int64
-	property := Search{}
-	for _, val := range response.Hits.Hits {
-		err := json.Unmarshal(*val.Source, &property)
-		if err != nil {
-			log.Print(err)
-			continue
-		}
-
-		if property.Payload.ID == id || property.Payload.BagVBOID == maybe(id) {
-			hits = int64(1)
-			break
-		}
-	}
-
-	return property, hits
-}
-
-func FetchPropertyFromLatlng(lat float64, lng float64) (Search, error) {
-	query := elastic.NewGeoDistanceQuery("Payload.Location").
-		Lat(lat).
-		Lon(lng).
-		Distance("5m")
-
-	response, _ := config.Config.ElasticSearch.Client.Search().
-		Index(config.Config.ElasticSearch.Index).
-		Type(config.Config.ElasticSearch.Type).
-		Query(query).
-		Do(context.TODO())
-
-	if response != nil && response.Hits.TotalHits > 0 {
-		for _, val := range response.Hits.Hits {
-			prop := Search{}
-			err := json.Unmarshal(*val.Source, &prop)
-			if err != nil {
-				log.Print(err)
-			} else {
-				return prop, nil
-			}
-		}
-	}
-
-	return Search{}, errors.New("not found")
 }
 
 func GetEarliestOpenHouseDay(id string) ([]OpenHouseDay, error) {
