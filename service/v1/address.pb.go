@@ -256,9 +256,9 @@ func (m *AddressGetByPathOptions) GetPath() string {
 
 type AddressGetMultiOptions struct {
 	Ids                  []string `protobuf:"bytes,1,rep,name=ids,proto3" json:"ids,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	XXX_NoUnkeyedLiteral struct{}    `json:"-" datastore:"-"`
+	XXX_unrecognized     []byte      `json:"-" datastore:"-"`
+	XXX_sizecache        int32       `json:"-" datastore:"-"`
 }
 
 func (m *AddressGetMultiOptions) Reset()         { *m = AddressGetMultiOptions{} }
@@ -294,9 +294,9 @@ func (m *AddressGetMultiOptions) GetIds() []string {
 
 type AddressListOptions struct {
 	Pagination           *Pagination `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}    `json:"-"`
-	XXX_unrecognized     []byte      `json:"-"`
-	XXX_sizecache        int32       `json:"-"`
+	XXX_NoUnkeyedLiteral struct{}    `json:"-" datastore:"-"`
+	XXX_unrecognized     []byte      `json:"-" datastore:"-"`
+	XXX_sizecache        int32       `json:"-" datastore:"-"`
 }
 
 func (m *AddressListOptions) Reset()         { *m = AddressListOptions{} }
@@ -341,9 +341,9 @@ type Address struct {
 	// @inject_tag: datastore:",noindex"
 	Label                string   `protobuf:"bytes,7,opt,name=label,proto3" json:"label,omitempty" datastore:",noindex"`
 	Type                 int64    `protobuf:"varint,8,opt,name=type,proto3" json:"type,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-" datastore:"-"`
+	XXX_unrecognized     []byte   `json:"-" datastore:"-"`
+	XXX_sizecache        int32    `json:"-" datastore:"-"`
 }
 
 func (m *Address) Reset()         { *m = Address{} }
@@ -422,9 +422,9 @@ func (m *Address) GetType() int64 {
 type Addresses struct {
 	Addresses            []*Address  `protobuf:"bytes,1,rep,name=addresses,proto3" json:"addresses,omitempty"`
 	Pagination           *Pagination `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}    `json:"-"`
-	XXX_unrecognized     []byte      `json:"-"`
-	XXX_sizecache        int32       `json:"-"`
+	XXX_NoUnkeyedLiteral struct{}    `json:"-" datastore:"-"`
+	XXX_unrecognized     []byte      `json:"-" datastore:"-"`
+	XXX_sizecache        int32       `json:"-" datastore:"-"`
 }
 
 func (m *Addresses) Reset()         { *m = Addresses{} }
